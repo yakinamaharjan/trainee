@@ -1,0 +1,30 @@
+INSERT,,
+1,yakina ,yakina@gmail.com
+INSERT,,
+1,yakina ,yakina@gmail.com
+2,aastha@gmail.com,a@gmail.com
+INSERT,,
+1,yakina ,yakina@gmail.com
+2,aastha@gmail.com,a@gmail.com
+3,rohan,rohan@gmail.com
+UPDATE,,
+1,yakina ,yakina@gmail.com
+2,astha,astha@gmail.com
+3,rohan,rohan@gmail.com
+DELETE,,
+2,astha,astha@gmail.com
+3,rohan,rohan@gmail.com
+INSERT,,
+1,yakina,yakina@gmail.com
+2,astha,astha@gmail.com
+3,rohan,rohan@gmail.com
+4,aryan,aryan@gmail.com
+UPDATE,,
+1,yakina,yakina@gmail.com
+2,astha,astha@gmail.com
+3,rohan,rohan@gmail.com
+4,bijay,bijay@gmail.com
+DELETE,,
+1,yakina,yakina@gmail.com
+3,rohan,rohan@gmail.com
+4,bijay,bijay@gmail.com
