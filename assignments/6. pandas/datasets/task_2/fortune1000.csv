@@ -38,6 +38,9 @@ State Farm Insurance Cos.,78331,2206.5,65664,Financials,Insurance: Property and 
 Johnson & Johnson,76450,1300,134000,Health Care,Pharmaceuticals
 Freddie Mac,74676,5625,6165,Financials,Diversified Financials
 Target,71879,2934,345000,Retailing,General Merchandisers
+Fannie Mae,112394,2463,7200,Financials,Diversified Financials
+Alphabet,110855,12662,80110,Technology,Internet Services and Retailing
+Home Depot,100904,8630,413000,Retailing,Specialty Retailers: Other
 Lowes,68619,3447,255000,Retailing,Specialty Retailers: Other
 Marathon Petroleum,67610,3432,43800,Energy,Petroleum Refining
 Procter & Gamble,66217,15326,95000,Household Products,Household and Personal Products
@@ -999,3 +1002,7 @@ Charles River Laboratories Intl,1858,123.4,11800,Health Care,Health Care: Pharma
 CoreLogic,1851,152.2,5900,Business Services,Financial Data Services
 Ensign Group,1849,40.5,21301,Health Care,Health Care: Medical Facilities
 HCP,1848,414.2,190,Financials,Real estate
+First American Financial,5772,423,18705,Financials,Insurance: Property and Casualty (Stock)
+Cincinnati Financial,5732,1045,4925,Financials,Insurance: Property and Casualty (Stock)
+Avon Products,5716,22,25000,Household Products,Household and Personal Products
+Northern Trust,5716,1199,18100,Financials,Commercial Banks
