@@ -12,10 +12,10 @@ from src.dqn import DeepQNetwork
 from src.tetris import Tetris
 from collections import deque
 
+LOG_FILE = 'logs/training.log'
 
 def get_args():
-    parser = argparse.ArgumentParser(
-        """Implementation of Deep Q Network to play Tetris""")
+    parser = argparse.ArgumentParser("""Implementation of Deep Q Network to play Tetris""")
     parser.add_argument("--width", type=int, default=10, help="The common width for all images")
     parser.add_argument("--height", type=int, default=20, help="The common height for all images")
     parser.add_argument("--block_size", type=int, default=30, help="Size of a block")
@@ -26,15 +26,14 @@ def get_args():
     parser.add_argument("--final_epsilon", type=float, default=1e-3)
     parser.add_argument("--num_decay_epochs", type=float, default=2000)
     parser.add_argument("--num_epochs", type=int, default=3000)
-    parser.add_argument("--save_interval", type=int, default=500)
-    parser.add_argument("--replay_memory_size", type=int, default=30000,
-                        help="Number of epoches between testing phases")
+    parser.add_argument("--save_interval", type=int, default=200)
+    parser.add_argument("--replay_memory_size", type=int, default=30000, help="Number of epoches between testing phases")
     parser.add_argument("--log_path", type=str, default="tensorboard")
     parser.add_argument("--saved_path", type=str, default="trained_models")
+    parser.add_argument("--max_sc", type=int, default=50000, help="Max score before forcing next epoch")
 
     args = parser.parse_args()
     return args
-
 
 def train(opt):
     if torch.cuda.is_available():
@@ -45,6 +44,7 @@ def train(opt):
         shutil.rmtree(opt.log_path)
     os.makedirs(opt.log_path)
     writer = SummaryWriter(opt.log_path)
+
     env = Tetris(width=opt.width, height=opt.height, block_size=opt.block_size)
     model = DeepQNetwork()
     optimizer = torch.optim.Adam(model.parameters(), lr=opt.lr)
@@ -55,11 +55,15 @@ def train(opt):
         model.cuda()
         state = state.cuda()
 
+    with open(LOG_FILE, 'w') as file:
+        file.write('Starting Training' + '\n')
+
     replay_memory = deque(maxlen=opt.replay_memory_size)
     epoch = 0
+    max_score = 0
     while epoch < opt.num_epochs:
         next_steps = env.get_next_states()
-        # Exploration or exploitation
+        
         epsilon = opt.final_epsilon + (max(opt.num_decay_epochs - epoch, 0) * (
                 opt.initial_epsilon - opt.final_epsilon) / opt.num_decay_epochs)
         u = random()
@@ -82,9 +86,13 @@ def train(opt):
 
         reward, done = env.step(action, render=True)
 
+        if env.score >= opt.max_sc:
+            done = True
+
         if torch.cuda.is_available():
             next_state = next_state.cuda()
         replay_memory.append([state, reward, next_state, done])
+
         if done:
             final_score = env.score
             final_tetrominoes = env.tetrominoes
@@ -124,22 +132,29 @@ def train(opt):
         loss.backward()
         optimizer.step()
 
-        print("Epoch: {}/{}, Action: {}, Score: {}, Tetrominoes {}, Cleared lines: {}".format(
-            epoch,
-            opt.num_epochs,
-            action,
-            final_score,
-            final_tetrominoes,
-            final_cleared_lines))
+        log_message = "Epoch: {}/{}, Score: {}, Tetrominoes {}, Cleared lines: {}".format(
+                    epoch,
+                    opt.num_epochs,
+                    final_score,
+                    final_tetrominoes,
+                    final_cleared_lines
+                )
+        # print(log_message)
         writer.add_scalar('Train/Score', final_score, epoch - 1)
         writer.add_scalar('Train/Tetrominoes', final_tetrominoes, epoch - 1)
         writer.add_scalar('Train/Cleared lines', final_cleared_lines, epoch - 1)
+        
+        with open(LOG_FILE, 'a') as file:
+            file.write(log_message + '\n')
 
-        if epoch > 0 and epoch % opt.save_interval == 0:
-            torch.save(model, "{}/tetris_epoch_{}".format(opt.saved_path, epoch))
+        # if epoch > 0 and epoch % opt.save_interval == 0:
+        #     torch.save(model, "{}/tetris_epoch_{}".format(opt.saved_path, epoch))
+        if final_score > max_score:
+            max_score = final_score
+            torch.save(model, "{}/tetris_{}".format(opt.saved_path, epoch))
+            print("Model {} saved".format(epoch))
 
     torch.save(model, "{}/tetris".format(opt.saved_path))
-
 
 if __name__ == "__main__":
     opt = get_args()
