@@ -6,7 +6,6 @@ from random import random, randint, sample
 import numpy as np
 import torch
 import torch.nn as nn
-from tensorboardX import SummaryWriter
 
 from src.dqn import DeepQNetwork
 from src.tetris import Tetris
@@ -28,7 +27,6 @@ def get_args():
     parser.add_argument("--num_epochs", type=int, default=3000)
     parser.add_argument("--save_interval", type=int, default=200)
     parser.add_argument("--replay_memory_size", type=int, default=30000, help="Number of epoches between testing phases")
-    parser.add_argument("--log_path", type=str, default="tensorboard")
     parser.add_argument("--saved_path", type=str, default="trained_models")
     parser.add_argument("--max_sc", type=int, default=50000, help="Max score before forcing next epoch")
 
@@ -40,10 +38,6 @@ def train(opt):
         torch.cuda.manual_seed(123)
     else:
         torch.manual_seed(123)
-    if os.path.isdir(opt.log_path):
-        shutil.rmtree(opt.log_path)
-    os.makedirs(opt.log_path)
-    writer = SummaryWriter(opt.log_path)
 
     env = Tetris(width=opt.width, height=opt.height, block_size=opt.block_size)
     model = DeepQNetwork()
