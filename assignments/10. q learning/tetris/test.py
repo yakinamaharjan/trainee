@@ -32,6 +32,9 @@ def test(opt):
     env.reset()
     if torch.cuda.is_available():
         model.cuda()
+    
+    out = cv2.VideoWriter('output.mp4', cv2.VideoWriter_fourcc(*"MJPG"), 300,
+                          (int(1.5*opt.width*opt.block_size), opt.height*opt.block_size))
 
     while True:
         next_steps = env.get_next_states()
