@@ -139,7 +139,6 @@ def train(opt):
                     final_tetrominoes,
                     final_cleared_lines
                 )
-        # print(log_message)
         writer.add_scalar('Train/Score', final_score, epoch - 1)
         writer.add_scalar('Train/Tetrominoes', final_tetrominoes, epoch - 1)
         writer.add_scalar('Train/Cleared lines', final_cleared_lines, epoch - 1)
@@ -152,7 +151,9 @@ def train(opt):
         if final_score > max_score:
             max_score = final_score
             torch.save(model, "{}/tetris_{}".format(opt.saved_path, epoch))
-            print("Model {} saved".format(epoch))
+            log_msg = "Model {} saved".format(epoch)
+            with open(LOG_FILE, 'a') as file:
+                file.write(log_msg + '\n')
 
     torch.save(model, "{}/tetris".format(opt.saved_path))
 
