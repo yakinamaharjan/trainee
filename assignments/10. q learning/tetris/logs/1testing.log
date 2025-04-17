@@ -1,0 +1,193 @@
+Model 1
+Test Run 1: Score: 10, Lines cleared: 0
+Test Run 2: Score: 14, Lines cleared: 0
+Test Run 3: Score: 12, Lines cleared: 0
+Average: Score: 12.0, Lines cleared: 0.0
+
+Model 2
+Test Run 1: Score: 10, Lines cleared: 0
+Test Run 2: Score: 9, Lines cleared: 0
+Test Run 3: Score: 12, Lines cleared: 0
+Average: Score: 10.33, Lines cleared: 0.0
+
+Model 65
+Test Run 1: Score: 14, Lines cleared: 0
+Test Run 2: Score: 13, Lines cleared: 0
+Test Run 3: Score: 16, Lines cleared: 0
+Average: Score: 14.33, Lines cleared: 0.0
+
+Model 72
+Test Run 1: Score: 16, Lines cleared: 0
+Test Run 2: Score: 10, Lines cleared: 0
+Test Run 3: Score: 10, Lines cleared: 0
+Average: Score: 12.0, Lines cleared: 0.0
+
+Model 383
+Test Run 1: Score: 28, Lines cleared: 0
+Test Run 2: Score: 21, Lines cleared: 0
+Test Run 3: Score: 19, Lines cleared: 0
+Average: Score: 22.67, Lines cleared: 0.0
+
+Model 425
+Test Run 1: Score: 12, Lines cleared: 0
+Test Run 2: Score: 25, Lines cleared: 0
+Test Run 3: Score: 10, Lines cleared: 0
+Average: Score: 15.67, Lines cleared: 0.0
+
+Model 447
+Test Run 1: Score: 23, Lines cleared: 0
+Test Run 2: Score: 24, Lines cleared: 0
+Test Run 3: Score: 28, Lines cleared: 0
+Average: Score: 25.0, Lines cleared: 0.0
+
+Model 888
+Test Run 1: Score: 30, Lines cleared: 0
+Test Run 2: Score: 32, Lines cleared: 0
+Test Run 3: Score: 97, Lines cleared: 5
+Average: Score: 53.0, Lines cleared: 1.67
+
+Model 895
+Test Run 1: Score: 31, Lines cleared: 0
+Test Run 2: Score: 26, Lines cleared: 0
+Test Run 3: Score: 34, Lines cleared: 0
+Average: Score: 30.33, Lines cleared: 0.0
+
+Model 918
+Test Run 1: Score: 32, Lines cleared: 0
+Test Run 2: Score: 32, Lines cleared: 0
+Test Run 3: Score: 34, Lines cleared: 0
+Average: Score: 32.67, Lines cleared: 0.0
+
+Model 985
+Test Run 1: Score: 28, Lines cleared: 0
+Test Run 2: Score: 31, Lines cleared: 0
+Test Run 3: Score: 32, Lines cleared: 0
+Average: Score: 30.33, Lines cleared: 0.0
+
+Model 1045
+Test Run 1: Score: 31, Lines cleared: 0
+Test Run 2: Score: 27, Lines cleared: 0
+Test Run 3: Score: 27, Lines cleared: 0
+Average: Score: 28.33, Lines cleared: 0.0
+
+Model 1096
+Test Run 1: Score: 50, Lines cleared: 1
+Test Run 2: Score: 85, Lines cleared: 4
+Test Run 3: Score: 41, Lines cleared: 1
+Average: Score: 58.67, Lines cleared: 2.0
+
+Model 1146
+Test Run 1: Score: 35, Lines cleared: 0
+Test Run 2: Score: 33, Lines cleared: 0
+Test Run 3: Score: 32, Lines cleared: 0
+Average: Score: 33.33, Lines cleared: 0.0
+
+Model 1373
+Test Run 1: Score: 4068, Lines cleared: 225
+Test Run 2: Score: 1732, Lines cleared: 101
+Test Run 3: Score: 7818, Lines cleared: 445
+Average: Score: 4539.33, Lines cleared: 257.0
+
+Model 1468
+Test Run 1: Score: 1870, Lines cleared: 118
+Test Run 2: Score: 955, Lines cleared: 51
+Test Run 3: Score: 783, Lines cleared: 55
+Average: Score: 1202.67, Lines cleared: 74.67
+
+Model 1538
+Test Run 1: Score: 81, Lines cleared: 4
+Test Run 2: Score: 1829, Lines cleared: 99
+Test Run 3: Score: 3150, Lines cleared: 139
+Average: Score: 1686.67, Lines cleared: 80.67
+
+Model 1550
+Test Run 1: Score: 67, Lines cleared: 3
+Test Run 2: Score: 141, Lines cleared: 7
+Test Run 3: Score: 592, Lines cleared: 35
+Average: Score: 266.67, Lines cleared: 15.0
+
+Model 1584
+Test Run 1: Score: 1129, Lines cleared: 68
+Test Run 2: Score: 1053, Lines cleared: 55
+Test Run 3: Score: 61, Lines cleared: 2
+Average: Score: 747.67, Lines cleared: 41.67
+
+Model 1609
+Test Run 1: Score: 3100, Lines cleared: 181
+Test Run 2: Score: 2216, Lines cleared: 136
+Test Run 3: Score: 2288, Lines cleared: 145
+Average: Score: 2534.67, Lines cleared: 154.0
+
+Model 1631
+Test Run 1: Score: 18883, Lines cleared: 1095
+Test Run 2: Score: 152010, Lines cleared: 8744
+Test Run 3: Score: 36502, Lines cleared: 2095
+Average: Score: 69131.67, Lines cleared: 3978.0
+
+Model 1646
+Test Run 1: Score: 155865, Lines cleared: 9487
+Test Run 2: Score: 41316, Lines cleared: 2600
+Test Run 3: Score: 87118, Lines cleared: 5229
+Average: Score: 94766.33, Lines cleared: 5772.0
+
+Model 1748 -----------------------------------------------------------------------------------------
+Test Run 1: Score: 140105, Lines cleared: 7961
+Test Run 2: Score: 241728, Lines cleared: 13835
+Test Run 3: Score: 71247, Lines cleared: 4078
+Average: Score: 151026.67, Lines cleared: 8624.67
+
+Model 1864
+Test Run 1: Score: 4030, Lines cleared: 249
+Test Run 2: Score: 4665, Lines cleared: 295
+Test Run 3: Score: 811, Lines cleared: 43
+Average: Score: 3168.67, Lines cleared: 195.67
+
+Model 1901
+Test Run 1: Score: 6724, Lines cleared: 399
+Test Run 2: Score: 693, Lines cleared: 45
+Test Run 3: Score: 2807, Lines cleared: 161
+Average: Score: 3408.0, Lines cleared: 201.67
+
+Model 1904
+Test Run 1: Score: 3196, Lines cleared: 205
+Test Run 2: Score: 4409, Lines cleared: 294
+Test Run 3: Score: 7141, Lines cleared: 445
+Average: Score: 4915.33, Lines cleared: 314.67
+
+Model 1963
+Test Run 1: Score: 5500, Lines cleared: 317
+Test Run 2: Score: 1023, Lines cleared: 55
+Test Run 3: Score: 2800, Lines cleared: 181
+Average: Score: 3107.67, Lines cleared: 184.33
+
+Model 1993
+Test Run 1: Score: 790, Lines cleared: 30
+Test Run 2: Score: 305, Lines cleared: 13
+Test Run 3: Score: 2220, Lines cleared: 99
+Average: Score: 1105.0, Lines cleared: 47.33
+
+Model 1994
+Test Run 1: Score: 647, Lines cleared: 22
+Test Run 2: Score: 2054, Lines cleared: 90
+Test Run 3: Score: 813, Lines cleared: 38
+Average: Score: 1171.33, Lines cleared: 50.0
+
+Model 1996
+Test Run 1: Score: 3080, Lines cleared: 146
+Test Run 2: Score: 26000, Lines cleared: 1071
+Test Run 3: Score: 65894, Lines cleared: 2730
+Average: Score: 31658.0, Lines cleared: 1315.67
+
+Model 1997
+Test Run 1: Score: 25353, Lines cleared: 1090
+Test Run 2: Score: 98719, Lines cleared: 4183
+Test Run 3: Score: 10433, Lines cleared: 437
+Average: Score: 44835.0, Lines cleared: 1903.33
+
+Model 2038
+Test Run 1: Score: 33384, Lines cleared: 1339
+Test Run 2: Score: 45062, Lines cleared: 1798
+Test Run 3: Score: 1131, Lines cleared: 42
+Average: Score: 26525.67, Lines cleared: 1059.67
+
+(training was interrupted)
