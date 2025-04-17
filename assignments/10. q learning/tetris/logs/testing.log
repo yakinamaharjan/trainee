@@ -70,3 +70,123 @@ Test Run 2: Score: 31, Lines cleared: 0
 Test Run 3: Score: 31, Lines cleared: 0
 Average: Score: 31.0, Lines cleared: 0.0
 
+Model 1155
+Test Run 1: Score: 32, Lines cleared: 0
+Test Run 2: Score: 32, Lines cleared: 0
+Test Run 3: Score: 80, Lines cleared: 2
+Average: Score: 48.0, Lines cleared: 0.67
+
+Model 1355
+Test Run 1: Score: 30, Lines cleared: 0
+Test Run 2: Score: 78, Lines cleared: 4
+Test Run 3: Score: 31, Lines cleared: 0
+Average: Score: 46.33, Lines cleared: 1.33
+
+Model 1425
+Test Run 1: Score: 572, Lines cleared: 27
+Test Run 2: Score: 529, Lines cleared: 30
+Test Run 3: Score: 1062, Lines cleared: 47
+Average: Score: 721.0, Lines cleared: 34.67
+
+Model 1447
+Test Run 1: Score: 42, Lines cleared: 1
+Test Run 2: Score: 72, Lines cleared: 3
+Test Run 3: Score: 55, Lines cleared: 2
+Average: Score: 56.33, Lines cleared: 2.0
+
+Model 1636
+Test Run 1: Score: 2602, Lines cleared: 124
+Test Run 2: Score: 6683, Lines cleared: 313
+Test Run 3: Score: 3644, Lines cleared: 168
+Average: Score: 4309.67, Lines cleared: 201.67
+
+Model 1718 ------------------------------------------------------------------------------------------
+Test Run 1: Score: 218410, Lines cleared: 13205
+Test Run 2: Score: 439330, Lines cleared: 26766
+Test Run 3: Score: 609738, Lines cleared: 36986
+Average: Score: 422492.67, Lines cleared: 25652.33
+
+Model 1759
+Test Run 1: Score: 6074, Lines cleared: 363
+Test Run 2: Score: 7762, Lines cleared: 479
+Test Run 3: Score: 1397, Lines cleared: 80
+Average: Score: 5077.67, Lines cleared: 307.33
+
+Model 1760
+Test Run 1: Score: 915, Lines cleared: 56
+Test Run 2: Score: 1312, Lines cleared: 67
+Test Run 3: Score: 2787, Lines cleared: 180
+Average: Score: 1671.33, Lines cleared: 101.0
+
+Model 1794
+Test Run 1: Score: 67576, Lines cleared: 3292
+Test Run 2: Score: 14972, Lines cleared: 726
+Test Run 3: Score: 166273, Lines cleared: 8315
+Average: Score: 82940.33, Lines cleared: 4111.0
+
+Model 1796
+Test Run 1: Score: 426944, Lines cleared: 21999
+Test Run 2: Score: 10822, Lines cleared: 547
+Test Run 3: Score: 1916, Lines cleared: 95
+Average: Score: 146560.67, Lines cleared: 7547.0
+
+Model 1799
+Test Run 1: Score: 469277, Lines cleared: 24114
+Test Run 2: Score: 4479, Lines cleared: 231
+Test Run 3: Score: 105494, Lines cleared: 5432
+Average: Score: 193083.33, Lines cleared: 9925.67
+
+Model 1864
+Test Run 1: Score: 49327, Lines cleared: 2329
+Test Run 2: Score: 59307, Lines cleared: 2662
+Test Run 3: Score: 130897, Lines cleared: 5778
+Average: Score: 79843.67, Lines cleared: 3589.67
+
+Model 1958
+Test Run 1: Score: 4299, Lines cleared: 173
+Test Run 2: Score: 497, Lines cleared: 18
+Test Run 3: Score: 6248, Lines cleared: 241
+Average: Score: 3681.33, Lines cleared: 144.0
+
+Model 1975
+Test Run 1: Score: 34871, Lines cleared: 1554
+Test Run 2: Score: 166626, Lines cleared: 7498
+Test Run 3: Score: 4886, Lines cleared: 205
+Average: Score: 68794.33, Lines cleared: 3085.67
+
+Model 1977
+Test Run 1: Score: 8069, Lines cleared: 354
+Test Run 2: Score: 32152, Lines cleared: 1451
+Test Run 3: Score: 44041, Lines cleared: 2006
+Average: Score: 28087.33, Lines cleared: 1270.33
+
+Model 1978
+Test Run 1: Score: 46008, Lines cleared: 1898
+Test Run 2: Score: 2673, Lines cleared: 106
+Test Run 3: Score: 15696, Lines cleared: 639
+Average: Score: 21459.0, Lines cleared: 881.0
+
+Model 2125
+Test Run 1: Score: 25004, Lines cleared: 1580
+Test Run 2: Score: 332, Lines cleared: 24
+Test Run 3: Score: 2133, Lines cleared: 139
+Average: Score: 9156.33, Lines cleared: 581.0
+
+Model 2167
+Test Run 1: Score: 2840, Lines cleared: 154
+Test Run 2: Score: 3496, Lines cleared: 178
+Test Run 3: Score: 1079, Lines cleared: 45
+Average: Score: 2471.67, Lines cleared: 125.67
+
+Model 2304
+Test Run 1: Score: 22305, Lines cleared: 891
+Test Run 2: Score: 25666, Lines cleared: 1018
+Test Run 3: Score: 27499, Lines cleared: 1123
+Average: Score: 25156.67, Lines cleared: 1010.67
+
+Model 2349
+Test Run 1: Score: 200644, Lines cleared: 9795
+Test Run 2: Score: 173930, Lines cleared: 8485
+Test Run 3: Score: 448762, Lines cleared: 22244
+Average: Score: 274445.33, Lines cleared: 13508.0
+

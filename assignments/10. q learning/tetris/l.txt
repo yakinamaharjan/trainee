@@ -1,0 +1,437 @@
+
+i cant remember to forget you
+CHASE ATLANTIC 💯
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+dqn.py — The Neural Network (Model)
+
+This file defines the architecture of the Deep Q-Network (DQN), a basic feed-forward neural network.
+
+class DeepQNetwork(nn.Module):
+    This is your neural network model used to approximate Q-values.
+
+Architecture:
+    Input: 4 features — [lines_cleared, holes, bumpiness, height].
+    Hidden layers:
+    Layer 1: 64 neurons + ReLU
+    Layer 2: 64 neurons + ReLU
+
+Output layer:
+    1 output (expected reward for a given action)
+
+def forward(self, x):
+    Performs a forward pass through the network.
+
+---------------------------------------------------------------------------------------------------------
+tetris.py — The Environment Wrapper
+This file contains the full environment logic for the Tetris game.
+
+What it does:
+    Manages game rules, pieces, collisions, line-clearing, scoring, rendering, and simulating gameplay steps.
+    Converts game states into numerical features for your model.
+
+Core methods:
+    reset() — Initializes or resets the board.
+    get_state_properties(board) — Returns 4 engineered features used as input to DQN.
+    get_next_states() — Simulates all possible actions and returns resulting states.
+    step(action) — Applies an action, updates the game state, and returns a reward and whether the game is over.
+    render() — Uses OpenCV to visualize the game in real time or save to video.
+
+--------------------------------------------------------------------------------------------------
+🏋️ train.py — Training Script
+This is the heart of your training loop for the DQN.
+
+Key responsibilities:
+    Training loop: For a number of epochs, it:
+    Chooses an action (exploration or exploitation via epsilon-greedy).
+    Performs that action in the game.
+    Saves experience (state, action, reward, next_state) to a replay buffer.
+    Samples mini-batches from the buffer and updates the DQN model.
+
+Special features:
+    max_sc: Ends an epoch early if a score threshold is reached.
+    save best model: Saves the model only if it outperforms the previous best.
+    TensorBoard logs for visualization.
+    Logging to file (training.log) for later analysis.
+
+------------------------------------------------------------------------------------------------------
+🧪 test.py — Testing Script
+This script loads a saved model and runs it in the Tetris environment.
+
+Workflow:
+    Loads model checkpoint.
+    Runs multiple test episodes (default = 3).
+    Renders game with OpenCV and records a video (output.mp4).
+    Logs individual and average scores and cleared lines.
+
+🔁 Integration Flow:
+User plays ➡ Generates State ➡ DQN predicts action ➡ Environment steps ➡ Updates memory ➡ Model trains ➡ Repeats
+Let me know if you'd like a flowchart or want to modularize this into a class-based system!
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+dqn.py — Deep Q-Network Architecture
+This file defines the neural network used to estimate Q-values.
+DeepQNetwork Class:
+    A simple 3-layer feedforward neural network:
+        self.conv1 = nn.Sequential(nn.Linear(4, 64), nn.ReLU(inplace=True))
+        self.conv2 = nn.Sequential(nn.Linear(64, 64), nn.ReLU(inplace=True))
+        self.conv3 = nn.Sequential(nn.Linear(64, 1))
+    Input size: 4 (lines cleared, holes, bumpiness, height)
+    Output size: 1 (Q-value of the given state)
+
+    Purpose: Learn how good a state is (not action-specific here; actions are inferred from state transitions)
+
+tetris.py — Environment Logic
+Implements a custom Tetris environment for training and testing.
+Important Components:
+    pieces: All 7 tetromino shapes.
+    reset(): Starts a new game, randomizes the next piece.
+    rotate(): Rotates a tetromino (used to test rotations).
+    get_next_states(): Generates all possible next states for all valid actions (rotation + position).
+    get_state_properties(): Encodes the board state into 4 features for the neural net:
+        Lines cleared
+        Number of holes
+        Bumpiness
+        Total height
+    step(): Applies the chosen action and updates the board, score, and tetromino count. Returns reward and game status.
+    render(): Displays the board using OpenCV.
+
+train.py — Training Loop
+    This file trains the model using the DQN algorithm.
+    Flow:
+        Argument Parser:
+            Configures parameters like width, height, learning rate, etc.
+        Replay Memory:
+            Stores experience tuples for batch training.
+        Training Loop:
+            while epoch < opt.num_epochs:
+    ...
+    At every step:
+        Generates all next valid states.
+        Predicts Q-values for each.
+        Chooses action via epsilon-greedy strategy.
+        Takes action, gets reward and next state.
+        Stores experience in replay memory.
+        Trains the model using MSE loss between:
+            y = reward + gamma * max(Q(next_state))
+    Saving Model:
+        Saves the model if current score > max score achieved so far.
+
+test.py — Evaluation Script
+    Loads the trained model and plays Tetris to evaluate its performance.
+    Steps:
+        Load model:
+            model = torch.load(...)
+            model.eval()
+        Run game loop:
+            For each frame, use model to predict best action.
+            Step environment with that action.
+            Render and optionally save to video.
+Repeat multiple runs to get average score and lines cleared.
+
+
+Summary of Architecture:
+Tetris: Custom gym-like environment.
+DeepQNetwork: Estimates value of a state.
+train.py: Trains the agent using DQN.
+test.py: Loads model and tests performance.
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+train.py — Training the Agent
+This script trains the DQN agent to play Tetris.
+
+Key Functions:
+get_args()
+Uses argparse to parse command-line arguments.
+
+Arguments include grid size, learning rate, epsilon settings, logging paths, and training control like max_sc (score threshold to end episode early).
+
+train(opt)
+Seeding for Reproducibility:
+
+python
+Copy
+Edit
+torch.manual_seed(123)
+Environment Setup:
+
+python
+Copy
+Edit
+env = Tetris(...)
+model = DeepQNetwork()
+Creates a game environment and initializes the neural network.
+
+Logging: Logs are saved to logs/training.log.
+
+Main Training Loop: Runs until num_epochs is reached.
+
+Chooses an action using ε-greedy strategy:
+
+python
+Copy
+Edit
+if random_action:
+    action = random choice
+else:
+    action = argmax(Q values)
+Performs env.step(action).
+
+Stores the (state, reward, next_state, done) tuple in replay memory.
+
+If enough memory, samples mini-batch and trains the DQN:
+
+python
+Copy
+Edit
+q_values = model(state_batch)
+y_batch = reward + γ * max(Q_next)
+loss = MSE(q_values, y_batch)
+Saves the model if it's the best score so far.
+
+🧠 dqn.py — Deep Q-Network Architecture
+This file defines the neural network used to estimate Q-values.
+
+Class: DeepQNetwork
+python
+Copy
+Edit
+self.conv1 = nn.Linear(4, 64)
+self.conv2 = nn.Linear(64, 64)
+self.conv3 = nn.Linear(64, 1)
+Input is a state vector of size 4 (lines cleared, holes, bumpiness, height).
+
+Predicts a single Q-value for a given state.
+
+forward(x)
+Passes input through ReLU activations and produces the output Q-value.
+
+🎮 tetris.py — Custom Game Environment
+This file contains all the game logic.
+
+Key Components:
+Board + Tetromino Shapes: Game board grid and 7 different shapes.
+
+Game Reset: Initializes a fresh board and random tetromino.
+
+Game Mechanics:
+
+rotate: Rotates tetromino.
+
+get_next_states: Returns all valid next positions and states.
+
+step: Moves the current piece, stores it, checks for lines cleared, and returns reward and done flag.
+
+render: Uses OpenCV to show the game visually.
+
+🧪 test.py — Testing the Trained Agent
+This script tests the trained model and optionally records video output.
+
+Key Components:
+get_args(): Parse testing options like width, model ID, render toggle, output path, and number of test runs.
+
+test(opt):
+
+Loads the saved model (Torch .pt file).
+
+Plays a full game automatically by selecting the best action at each step.
+
+Saves video if --rendering is set and appends test results to logs/testing.log.
+
+🧾 Summary of Workflow:
+Training (train.py)
+
+Train the DQN agent on custom Tetris environment.
+
+Use ε-greedy for exploration and backpropagation for learning.
+
+Save the best model based on max score.
+
+Testing (test.py)
+
+Load the trained model and let the agent play.
+
+Render gameplay, optionally save to video.
+
+Logs performance to file.
+
+Environment (tetris.py)
+
+Handles game logic, piece movement, scoring, and rendering.
+
+Model (dqn.py)
+
+Simple feedforward network to predict Q-values from state inputs.
+
+
+
+
+
+
+
+
+Absolutely! Let's walk through how training works in your Deep Q-Learning (DQN) implementation for Tetris step-by-step, in simple but detailed terms.
+
+💡 Goal of Training
+You're teaching an agent to play Tetris well by:
+
+Observing the board state
+
+Predicting good actions
+
+Improving its decisions over time using reinforcement learning
+
+This is done using the Deep Q-Learning algorithm with a neural network (Q-network) to estimate the Q-values.
+
+📦 Main Components
+
+Component	Role
+Tetris environment	Where the game is played
+DeepQNetwork	Learns to predict Q-values (how good an action is in a given state)
+ReplayMemory (deque)	Stores past experiences for training
+train.py	The training loop where learning happens
+🔁 Step-by-Step: Training Loop (from train.py)
+1. Initialize Environment and Network
+python
+Copy
+Edit
+env = Tetris(...)
+model = DeepQNetwork()
+optimizer = torch.optim.Adam(...)
+Set up the game.
+
+Initialize the neural network and optimizer.
+
+2. Main Training Loop
+python
+Copy
+Edit
+while epoch < opt.num_epochs:
+Runs for num_epochs (episodes).
+
+Each epoch represents one Tetris game session.
+
+3. Get Next States
+python
+Copy
+Edit
+next_steps = env.get_next_states()
+For the current Tetris piece:
+
+Try placing it in all possible positions and rotations.
+
+For each option, calculate a "feature vector" (lines cleared, holes, bumpiness, height).
+
+The agent will choose one of these to play next.
+
+4. Epsilon-Greedy Action Selection
+python
+Copy
+Edit
+if random.random() < epsilon:
+    action = random
+else:
+    action = best according to Q-network
+Random action = exploration (try new things)
+
+Best predicted action = exploitation (use what it has learned)
+
+Epsilon (ε) gradually decreases to favor exploitation over time.
+
+5. Play Action in Environment
+python
+Copy
+Edit
+reward, done = env.step(action)
+Execute the chosen move.
+
+Receive a reward (e.g., +1 for move, +bonus for lines cleared)
+
+done becomes True if the game ends or max score is reached.
+
+6. Store Experience in Replay Buffer
+python
+Copy
+Edit
+replay_memory.append([state, reward, next_state, done])
+This stores:
+
+state: the game board features before the action
+
+reward: how good the move was
+
+next_state: new board state after the action
+
+done: whether the game ended
+
+🧠 This memory is used to train the agent after the fact.
+
+7. Train the Neural Network
+python
+Copy
+Edit
+batch = sample(replay_memory, batch_size)
+...
+loss = criterion(q_values, y_batch)
+loss.backward()
+optimizer.step()
+a. Sample random batch from memory (experience replay)
+Prevents the network from learning based on recent correlated steps.
+
+Increases stability.
+
+b. Predict current Q-values for each state
+python
+Copy
+Edit
+q_values = model(state_batch)
+c. Compute target Q-values (reward + γ * max Q(next state))
+python
+Copy
+Edit
+y_batch = reward + gamma * max(predicted future Q)
+d. Compute loss (mean squared error)
+Loss = how far off your predictions are from the true Q-values.
+
+e. Backpropagate and update weights
+Standard neural network training.
+
+8. Save Best Model
+python
+Copy
+Edit
+if final_score > max_score:
+    torch.save(model, ...)
+Saves model checkpoint if it outperforms previous best.
+
+📈 Output During Training
+Score
+
+Tetrominoes placed
+
+Cleared lines
+
+Saved to logs and tensorboard if needed
+
+🧠 Summary of Key Training Logic
+
+Concept	What It Does
+State	Game board features: lines cleared, holes, bumpiness, height
+Action	Where and how to drop a piece
+Reward	Score for clearing lines
+Q-Network	Predicts quality of actions
+Replay Memory	Stores experiences to break correlation
+Epsilon-Greedy	Balances exploration & exploitation
+Loss & Optimizer	Adjusts network weights for better predictions
