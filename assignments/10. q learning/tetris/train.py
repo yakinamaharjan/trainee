@@ -19,16 +19,14 @@ def get_args():
     parser.add_argument("--height", type=int, default=20, help="The common height for all images")
     parser.add_argument("--block_size", type=int, default=30, help="Size of a block")
     parser.add_argument("--batch_size", type=int, default=512, help="The number of images per batch")
-    parser.add_argument("--lr", type=float, default=1e-3)
+    parser.add_argument("--lr", type=float, default=0.001)
     parser.add_argument("--gamma", type=float, default=0.99)
     parser.add_argument("--initial_epsilon", type=float, default=1)
-    parser.add_argument("--final_epsilon", type=float, default=1e-3)
+    parser.add_argument("--final_epsilon", type=float, default=0.001)
     parser.add_argument("--num_decay_epochs", type=float, default=2000)
     parser.add_argument("--num_epochs", type=int, default=3000)
-    parser.add_argument("--save_interval", type=int, default=200)
     parser.add_argument("--replay_memory_size", type=int, default=30000, help="Number of epoches between testing phases")
     parser.add_argument("--saved_path", type=str, default="trained_models")
-    parser.add_argument("--max_sc", type=int, default=50000, help="Max score before forcing next epoch")
 
     args = parser.parse_args()
     return args
@@ -80,7 +78,7 @@ def train(opt):
 
         reward, done = env.step(action, render=True)
 
-        if env.score >= opt.max_sc:
+        if env.score >= 50000:
             done = True
 
         if torch.cuda.is_available():
@@ -140,8 +138,6 @@ def train(opt):
         with open(LOG_FILE, 'a') as file:
             file.write(log_message + '\n')
 
-        # if epoch > 0 and epoch % opt.save_interval == 0:
-        #     torch.save(model, "{}/tetris_epoch_{}".format(opt.saved_path, epoch))
         if final_score > max_score:
             max_score = final_score
             torch.save(model, "{}/tetris_{}".format(opt.saved_path, epoch))
