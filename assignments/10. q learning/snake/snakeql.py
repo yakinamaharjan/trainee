@@ -5,12 +5,12 @@ import pickle
 
 class SnakeQAgent():
     def __init__(self):
-        self.discount_rate = 0.95
+        self.discount_rate = 0.75
         self.learning_rate = 0.01
         self.eps = 1.0
         self.eps_discount = 0.9992
         self.min_eps = 0.001
-        self.num_episodes = 10000
+        self.num_episodes = 50000
         self.table = np.zeros((2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4))
         self.env = LearnSnake()
         self.score = 0
@@ -32,9 +32,6 @@ class SnakeQAgent():
             
             msg = f"Episodes: {i}, score: {np.mean(self.score)}, survived: {np.mean(self.survived)}, eps: {self.eps}"
             
-            if i == 10000:
-                with open(f'model/{i}.pickle', 'wb') as file:
-                    pickle.dump(self.table, file)
             if max_score < self.score:
                 max_score = self.score
                 msg = msg + " --- (new best score)"
@@ -51,9 +48,7 @@ class SnakeQAgent():
                 action = self.get_action(current_state)
                 new_state, reward, done = self.env.step(action)
                 
-                self.table[current_state][action] = (1 - self.learning_rate)\
-                    * self.table[current_state][action] + self.learning_rate\
-                    * (reward + self.discount_rate * max(self.table[new_state])) 
+                self.table[current_state][action] = (1 - self.learning_rate) * self.table[current_state][action] + self.learning_rate * (reward + self.discount_rate * max(self.table[new_state])) 
                 current_state = new_state
                 
                 steps_without_food += 1

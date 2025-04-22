@@ -29,7 +29,6 @@ class LearnSnake:
         self.food_r, self.food_c = self.generate_food()
         self.board[self.food_r][self.food_c] = 2
         self.survived = 0
-
         
         self.step()
     
@@ -103,7 +102,6 @@ class LearnSnake:
             self.r_change = 1
             self.c_change = 0
             self.dir = "down"
-
  
         if self.c1 >= self.screen_width // self.snake_size or self.c1 < 0 or self.r1 >= self.screen_height // self.snake_size or self.r1 < 0:
             self.game_close = True
@@ -124,8 +122,7 @@ class LearnSnake:
         for r, c in self.snake_coords[:-1]:
             if r == self.r1 and c == self.c1:
                 self.game_close = True
- 
- 
+  
         if self.c1 == self.food_c and self.r1 == self.food_r:
             self.food_r, self.food_c = self.generate_food()
             self.board[self.food_r][self.food_c] = 2
@@ -138,7 +135,6 @@ class LearnSnake:
             else:
                 rh2, ch2 = self.snake_coords[-1]
         
-        # death = -10 reward
         if self.game_close:
             reward = -10
         self.survived += 1

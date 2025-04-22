@@ -18,8 +18,8 @@ class VisualSnake:
         self.episode = None
         
         self.scale = 1
-        self.game_width = int(400 * self.scale)
-        self.game_height = int(200 * self.scale)
+        self.game_width = int(600 * self.scale)
+        self.game_height = int(400 * self.scale)
         
         self.padding = int(30 * self.scale)
         self.screen_width = self.game_width
@@ -202,7 +202,7 @@ class VisualSnake:
         filename = f"model/{episode}.pickle"
         with open(filename, 'rb') as file:
             table = pickle.load(file)
-        time.sleep(5)
+        time.sleep(2)
         current_length = 2
         steps_unchanged = 0
         while not self.game_over():
@@ -226,7 +226,7 @@ class VisualSnake:
             self.print_episode()
             self.print_score(self.snake_length - 1)
             pygame.display.update()
-            time.sleep(5)
+            time.sleep(2)
             pygame.quit()
         return self.snake_length
             
