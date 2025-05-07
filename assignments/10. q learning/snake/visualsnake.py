@@ -105,7 +105,6 @@ class VisualSnake:
         state.append(self.is_unsafe(head_r, head_c - 1))
         return tuple(state)
     
-                
     def valid_index(self, r, c):
         return 0 <= r < len(self.board) and 0 <= c < len(self.board[0])
       
@@ -127,8 +126,7 @@ class VisualSnake:
     
     def game_over(self):
         return self.game_close
-        
-        
+                
     def step(self, action="None"):
         if action == "None":
             action = random.choice(["left", "right", "up", "down"])
@@ -212,7 +210,6 @@ class VisualSnake:
             else:
                 steps_unchanged += 1
                 
-
             state = self.get_state()
             action = np.argmax(table[state])
             if steps_unchanged == 1000:
