@@ -169,3 +169,10 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+
+
+COMP5329S1A2Dataset/
+bert-base-cased/
+
+glove.6B.100d.txt
