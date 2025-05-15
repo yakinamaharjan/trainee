@@ -5,6 +5,6 @@ Jane is fasterthan Joe.Joe is fasterthan Sam. Is Sam fasterthan Jane?
 There are three killers in a room. Someone enters the room and kills one ofthem. Nobody leaves the room. How many killers are leftin the room?
 Create JSON forthe following: There are 3 people,two males. One is named Mark. Another is named Joe. And a third person, who is a woman, is named Sam. The woman is age 30 and the two men are both 19.
 Assume the laws of physics on Earth. A small marble is putinto a normal cup and the cup is placed upside down on a table. Someone then takes the cup without changing its orientation and puts itinside the microwave. Where is the marble now?
-John and Mark are in a room with a ball, a basket and a box.John puts the ball in the box,then leaves for work. While John is away, Mark puts the ball in the basket, and then leaves for school. They both come back together later in the day, and they do not know what happened in the room after each ofthem leftthe room. Where do they think the ball is?
+John and Mark are in a room with a ball, a basket and a box.John puts the ball in the box,then leaves for work. While John is away, Mark puts the ball in the basket, and then leaves for school. They both come back together later in the day, and they do not know what happened in the room after each ofthem left the room. Where do they think the ball is?
 Give me 10 sentences that end in the word Apple
 It takes one person 5 hours to dig a 10 foot hole in the ground. How long would it take 50 people to dig a single 10 foot hole?
