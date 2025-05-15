@@ -172,7 +172,8 @@ cython_debug/
 
 
 
-COMP5329S1A2Dataset/*
+COMP5329S1A2Dataset/
+COMP5329S1A2Dataset/data
 bert-base-cased/*
 
 glove.6B.100d.txt
